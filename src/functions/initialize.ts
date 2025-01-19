@@ -14,7 +14,8 @@ export interface ExtensionState {
     clickFlood: boolean;
     selectingHandItemFurni: boolean;
     handItemFurni?: Number;
-    handItemFlood: Boolean
+    handItemFlood: Boolean;
+    antiSpam: boolean;
 }
 
 export const initialState: ExtensionState = {
@@ -28,6 +29,7 @@ export const initialState: ExtensionState = {
     clickFlood: false,
     selectingHandItemFurni: false,
     handItemFlood: false,
+    antiSpam: false,
 };
 
 export async function initilizeExtension(ext: Extension) {

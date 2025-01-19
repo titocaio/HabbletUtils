@@ -1,0 +1,18 @@
+{
+  "name": "habbletutils",
+  "version": "1.0.0",
+  "description": "By @RiotSpacebar",
+  "main": "src/main.ts",
+  "type": "module",
+  "scripts": {
+    "test": "npx tsx src/main.ts -p 9092",
+    "start": "npx tsx src/main.ts"
+  },
+  "license": "MIT",
+  "author": "Lx",
+  "dependencies": {
+    "gnode-api": "^0.2.18",
+    "tsx": "^4.16.5",
+    "typescript": "^5.5.4"
+  }
+}

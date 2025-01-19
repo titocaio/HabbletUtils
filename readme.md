@@ -11,6 +11,7 @@
 ## Sobre
 
 HabbleUtils é uma extensão do [G-Earth](https://github.com/UnfamiliarLegacy/G-Earth "G-Earth") que reúne diversas funções utilitárias para o [Habblet](http://habblet.city "Habblet")!
+[![Showcase](https://img.youtube.com/vi/9tSKX5I8alk/0.jpg)](https://www.youtube.com/watch?v=9tSKX5I8alk)
 
 ## Funções
 - Anti AFK

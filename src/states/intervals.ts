@@ -3,5 +3,5 @@ export interface IntervalsInterface {
 }
 
 export const intervals: IntervalsInterface = {
-    antiafk: null, // Example interval for "antiafk"
+    floodclick: null,
 };

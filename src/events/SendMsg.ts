@@ -5,13 +5,10 @@ import { Event } from "../interfaces/Event";
 export const event: Event = {
     run: (ext: Ext, hMessage: HMessage) => {
         const packet = hMessage.getPacket();
-        const message = packet.readString();
+        const chatId = packet.readInteger()
+        const message = packet.readString()
 
-        console.log(message)
-
-        if (!message.startsWith("!")) return;
-
-        hMessage.blocked = true;
+        if (chatId != 999999999 || !message.startsWith("!")) return;
 
         const args = message.split(/\s+/g)
         const command = args[0].slice(1)
@@ -23,14 +20,14 @@ export const event: Event = {
         }
 
         try {
-            cmd.run(ext, args, "Chat");
+            cmd.run(ext, args, "Console");
         } catch (error) {
             console.error(`Error running command '${command}':`, error);
         }
     },
     config: {
-        name: 'Chat',
-        header: 'Chat',
+        name: 'Console',
+        header: 'SendMsg',
         direction: HDirection.TOSERVER
     }
 }

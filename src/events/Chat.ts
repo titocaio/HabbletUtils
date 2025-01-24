@@ -1,21 +1,36 @@
-import { Extension, HDirection, HMessage } from "gnode-api"
+import { HDirection, HMessage } from "gnode-api"
+import { Ext } from "../classes/Extension";
+import { Event } from "../interfaces/Event";
 
-export const run = (ext: Extension , hMessage: HMessage) => {
-    const packet = hMessage.getPacket();
-    const message = packet.readString();
+export const event: Event = {
+    run: (ext: Ext, hMessage: HMessage) => {
+        const packet = hMessage.getPacket();
+        const message = packet.readString();
 
-    if (!message.startsWith("!")) return;
+        console.log(message)
 
-    const args = message.split(/\s+/g)
-    const command = args[0].slice(1)
-    const cmd = ext.commands.get(command)
+        if (!message.startsWith("!")) return;
 
-    if (!cmd) return;
+        hMessage.blocked = true;
 
-    cmd.run(ext, args, "chat")
-}
+        const args = message.split(/\s+/g)
+        const command = args[0].slice(1)
+        const cmd = ext.commands.get(command)
 
-export const config = {
-    direction: HDirection.TOSERVER,
-    header: 'Chat',
+        if (!cmd) {
+            console.error(`Command '${command}' not found.`);
+            return;
+        }
+
+        try {
+            cmd.run(ext, args, "Chat");
+        } catch (error) {
+            console.error(`Error running command '${command}':`, error);
+        }
+    },
+    config: {
+        name: 'Chat',
+        header: 'Chat',
+        direction: HDirection.TOSERVER
+    }
 }

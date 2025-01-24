@@ -1,14 +1,14 @@
-import { Extension, HPacket } from "gnode-api"
-import { sendNotification } from "../utils"
+import { Ext } from "../classes/Extension"
+import { Command } from "../interfaces/Command"
 
-export const run = (ext: Extension, args: String[]) => {
-    ext.commands.forEach((command) => {
-        sendNotification(`!${command.config.name}: ${command.config.description}`, "console")
-        ext.sendToClient(new HPacket(`{in:NewConsole}{i:999999999}{s:"------------------------------------------------"}{i:0}{s:""}`))
-    })
-}
-
-export const config = {
-    name: 'help',
-    description: "Lista todos os comandos disponiveis"
+export const command: Command = {
+    run: (ext: Ext, args: String[]) => {
+        ext.commands.forEach((command) => {
+            
+        })
+    },
+    config: {
+        name: 'help',
+        description: "Lista todos os comandos disponiveis"
+    }
 }

@@ -6,17 +6,24 @@ import { sendNotification } from "../functions/sendNotification";
 export const event: Event = {
     run: async (ext: Ext, hMessage: HMessage) => {
         const packet = hMessage.getPacket();
-        const reason = packet.readInteger()
-    
-        if (reason != 5 || !ext.states.antiafk) return;
-    
+        const index = packet.readInteger()
+        const text = packet.readString()
+
+        if (!ext.states.clonetext || ext.states.cloningUserId === 0) return;
+        if (index !== ext.states.cloningUserId) return;
+
         await delay(10)
-        ext.sendToServer(new HPacket(`{out:AvatarExpression}{i:4}`))
+        const msgpacket = new HPacket('Chat', HDirection.TOSERVER)
+        .appendString(text)
+        .appendInt(1007)
+        .appendInt(0)
+        ext.sendToServer(msgpacket)
+
     },
     config: {
-        name: 'Anti AFK',
-        header: 'AvatarExpression',
-        direction: HDirection.TOSERVER 
+        name: 'Chat',
+        header: 'Chat',
+        direction: HDirection.TOCLIENT
     }
 }
 

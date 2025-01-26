@@ -6,6 +6,11 @@ export interface StatesInterface {
     antityping: boolean
     blockmove: boolean
     floodclick: boolean
+    blockclick: boolean
+    stay: boolean
+    clonetext: boolean
+    cloningUserId: number
+    floodhanditem: boolean
 }
 
 export const states: StatesInterface = {
@@ -16,4 +21,9 @@ export const states: StatesInterface = {
     antityping: true,
     blockmove: false,
     floodclick: false,
+    blockclick: true,
+    stay: false,
+    clonetext: false,
+    cloningUserId: 0,
+    floodhanditem: false
 }

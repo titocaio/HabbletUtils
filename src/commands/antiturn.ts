@@ -5,10 +5,10 @@ import { Command } from "../interfaces/Command"
 export const command: Command = {
     run: async (ext: Ext, args: String[]) => {
         ext.states.antiturn = !ext.states.antiturn
-        sendConsoleMessage(`Anti Turn ${ext.states.antiturn ? 'Ativado' : 'Desativado'}`)
+        sendConsoleMessage(`Você ${ext.states.antiturn ? 'ativou' : 'desativou'} o Anti Turn (Giro) com sucesso!`)
     },
     config: {
         name: 'antiturn',
-        description: "Ativa ou desativa o Anti Turn (giro)"
+        description: "Ativa ou desativa o Anti Turn (Giro)"
     }
 }

@@ -8,18 +8,26 @@ export const command: Command = {
     run: async (ext: Ext, args: String[]) => {
         try {
             sendConsoleMessage('Clique em um usuario...');
-            const userId = await getUserId(10000);
+            const userId = await getUserId(10000); // Função para obter o ID do usuário
             sendConsoleMessage('ID Recebido: ' + userId);
 
-            const user = getUserById(userId);
+            const user = getUserById(userId); // Função para obter o objeto do usuário pelo ID
             if (user) {
                 sendConsoleMessage('Nome do usuário: ' + user.name);
             } else {
-                sendConsoleMessage('Não achei esse usuario na lista de usuarios do quarto, por favor reentre para consertar isso')
+                sendConsoleMessage('Não achei esse usuario na lista de usuarios do quarto, por favor reentre no quarto para consertar isso')
             }
         } catch (error: any) {
-            sendConsoleMessage('Error, olhe o console');
-            console.error('Error:', error.message);
+            // Checa se o erro foi um timeout (tempo excedido)
+            if (error instanceof Error && error.message.includes("Timeout")) {
+                sendConsoleMessage(
+                    "Você não selecionou o usuario a tempo, execute o comando novamente"
+                );
+            } else {
+                // Caso contrário, exibe o erro no console
+                sendConsoleMessage(`Ocorreu um erro inesperado, olhe o console.`);
+                console.error(error);
+            }
         }
     },
     config: {

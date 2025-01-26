@@ -6,6 +6,9 @@ export const event: Event = {
     run: (ext: Ext, hMessage: HMessage) => {
         const packet = hMessage.getPacket()
         const userParser = HEntity.parse(packet)
+
+        let myUser = userParser.find((user) => user.id === ext.userObject.id)
+        if (myUser) ext.userObject.index = myUser.index
     
         if (userParser.length >= 5) return ext.roomUsers = userParser
     

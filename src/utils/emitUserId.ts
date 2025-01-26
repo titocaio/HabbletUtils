@@ -1,4 +1,3 @@
-// userIdEvent.ts
 import { EventEmitter } from 'events';
 
 // Create an instance of EventEmitter
@@ -19,7 +18,7 @@ export function getUserId(timeout = 10000): Promise<number> {
     }),
     new Promise<number>((_, reject) => {
       setTimeout(() => {
-        reject(new Error('Timeout: Failed to receive userId within the specified time.'));
+        reject(new Error('Timeout User: Failed to receive userId within the specified time.'));
       }, timeout);
     }),
   ]);

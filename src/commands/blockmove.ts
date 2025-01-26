@@ -5,7 +5,7 @@ import { Command } from "../interfaces/Command"
 export const command: Command = {
     run: async (ext: Ext, args: String[]) => {
         ext.states.blockmove = !ext.states.blockmove
-        sendConsoleMessage(`Bloqueio de movimento ${ext.states.blockmove ? 'Ativado' : 'Desativado'} `)
+        sendConsoleMessage(`Você ${ext.states.blockmove ? 'ativou' : 'desativou'} o Bloqueio de movimento com sucesso!`)
     },
     config: {
         name: 'blockmove',

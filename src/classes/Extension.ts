@@ -8,6 +8,7 @@ import { join } from 'path';
 import { Event } from '../interfaces/Event';
 import { Console } from './Console';
 import { userObjectInterface } from '../interfaces/UserObject';
+import { variables, VariablesInterface } from '../states/variables';
 
 export class Ext extends Extension {
     commands: Map<string, Command>;
@@ -15,7 +16,8 @@ export class Ext extends Extension {
     states: StatesInterface
     intervals: IntervalsInterface
     userObject: userObjectInterface
-    roomUsers: HEntity[];
+    roomUsers: HEntity[]
+    variables: VariablesInterface
 
     constructor(options: ExtensionInfo) {
         super(options);
@@ -32,6 +34,7 @@ export class Ext extends Extension {
             motto: undefined
         }
         this.roomUsers = []
+        this.variables = variables
 
         this.initialize();
     }

@@ -4,4 +4,5 @@ export interface IntervalsInterface {
 
 export const intervals: IntervalsInterface = {
     floodclick: null,
+    stay: null,
 };

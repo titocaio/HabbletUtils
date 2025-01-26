@@ -5,7 +5,7 @@ import { Command } from "../interfaces/Command"
 export const command: Command = {
     run: async (ext: Ext, args: String[]) => {
         ext.states.antispam = !ext.states.antispam
-        sendConsoleMessage(`Anti Spam ${ext.states.antispam ? 'Ativado' : 'Desativado'} `)
+        sendConsoleMessage(`Você ${ext.states.antispam ? 'ativou' : 'desativou'} o Anti Spam com sucesso!`)
     },
     config: {
         name: 'antispam',

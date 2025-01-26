@@ -1,10 +1,14 @@
-import { Extension, HDirection, HMessage } from "gnode-api"
+import { HDirection, HMessage } from "gnode-api"
+import { Ext } from "../classes/Extension";
+import { Event } from "../interfaces/Event";
 
-export const run = (ext: Extension , hMessage: HMessage) => {
-    if (ext.state.antiSpam) hMessage.blocked = true
-}
-
-export const config = {
-    direction: HDirection.TOCLIENT,
-    header: 'HandItemReceived',
+export const event: Event = {
+    run: (ext: Ext, hMessage: HMessage) => {
+        if (ext.states.antispam) hMessage.blocked = true
+    },
+    config: {
+        name: 'HandItemReceived',
+        header: 'HandItemReceived',
+        direction: HDirection.TOCLIENT
+    }
 }

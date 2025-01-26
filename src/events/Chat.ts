@@ -1,21 +1,32 @@
-import { Extension, HDirection, HMessage } from "gnode-api"
+import { HDirection, HMessage, HPacket } from "gnode-api"
+import { Ext } from "../classes/Extension";
+import { Event } from "../interfaces/Event";
+import { sendNotification } from "../functions/sendNotification";
 
-export const run = (ext: Extension , hMessage: HMessage) => {
-    const packet = hMessage.getPacket();
-    const message = packet.readString();
+export const event: Event = {
+    run: async (ext: Ext, hMessage: HMessage) => {
+        const packet = hMessage.getPacket();
+        const index = packet.readInteger()
+        const text = packet.readString()
 
-    if (!message.startsWith("!")) return;
+        if (!ext.states.clonetext || ext.states.cloningUserId === 0) return;
+        if (index !== ext.states.cloningUserId) return;
 
-    const args = message.split(/\s+/g)
-    const command = args[0].slice(1)
-    const cmd = ext.commands.get(command)
+        await delay(10)
+        const msgpacket = new HPacket('Chat', HDirection.TOSERVER)
+        .appendString(text)
+        .appendInt(1007)
+        .appendInt(0)
+        ext.sendToServer(msgpacket)
 
-    if (!cmd) return;
-
-    cmd.run(ext, args, "chat")
+    },
+    config: {
+        name: 'Chat',
+        header: 'Chat',
+        direction: HDirection.TOCLIENT
+    }
 }
 
-export const config = {
-    direction: HDirection.TOSERVER,
-    header: 'Chat',
+function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

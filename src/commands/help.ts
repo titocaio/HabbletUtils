@@ -1,14 +1,18 @@
-import { Extension, HPacket } from "gnode-api"
-import { sendNotification } from "../utils"
+import { Ext } from "../classes/Extension"
+import { getUserById } from "../functions/getUserById";
+import { sendConsoleMessage } from "../functions/sendConsoleMessage";
+import { Command } from "../interfaces/Command"
+import { getUserId } from "../utils/emitUserId";
 
-export const run = (ext: Extension, args: String[]) => {
-    ext.commands.forEach((command) => {
-        sendNotification(`!${command.config.name}: ${command.config.description}`, "console")
-        ext.sendToClient(new HPacket(`{in:NewConsole}{i:999999999}{s:"------------------------------------------------"}{i:0}{s:""}`))
-    })
-}
-
-export const config = {
-    name: 'help',
-    description: "Lista todos os comandos disponiveis"
+export const command: Command = {
+    run: async (ext: Ext, args: String[]) => {
+        ext.commands.forEach((command) => {
+            sendConsoleMessage(`!${command.config.name}: ${command.config.description}`)
+            sendConsoleMessage('------------------------------------------------')
+        })
+    },
+    config: {
+        name: 'help',
+        description: "Exibe todos os comandos disponíveis"
+    }
 }

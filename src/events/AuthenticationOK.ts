@@ -4,11 +4,11 @@ import { Event } from "../interfaces/Event";
 
 export const event: Event = {
     run: (ext: Ext, hMessage: HMessage) => {
-        if (ext.states.antityping) hMessage.blocked = true
+        ext.states.login = true;
     },
     config: {
-        name: 'StartTyping',
-        header: 'StartTyping',
-        direction: HDirection.TOSERVER
+        name: 'Login',
+        header: 'AuthenticationOK',
+        direction: HDirection.TOCLIENT  
     }
 }

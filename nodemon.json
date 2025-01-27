@@ -3,4 +3,4 @@
     "ignore": ["src/prebuilt-index.ts"],
     "ext": "ts",
     "exec": "yarn run prebuild && ts-node ./src/index.ts -p 9092"
-  }
+}

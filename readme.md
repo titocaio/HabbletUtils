@@ -28,9 +28,9 @@ HabbleUtils é uma extensão do [G-Earth](https://github.com/UnfamiliarLegacy/G-
 ## Instalação
 1. Baixe a ultima versão do [G-Earth](https://github.com/UnfamiliarLegacy/G-Earth "G-Earth")
 2. Baixe a última versão do HabbletUtils direto da página de [Releases](https://github.com/iIlusion/HabbletUtils/releases/latest).
-3. Extraia os arquivos do HabbletUtils dentro da pasta "Extensions" na pasta raiz do G-Earth
-4. Abra a pasta HabbletUtils_x.x.x.zip, abre a pasta extension e execute o arquivo install.bat para instalar as dependências do HabbletUtils
-5. Abra o G-Earth e conecte-se ao Habblet usando, a extensão deverá estar funcionando
+3. Abra o [G-Earth](https://github.com/UnfamiliarLegacy/G-Earth "G-Earth") e ative o modo desenvolvedor na aba Extra
+4. Vá para a aba de extensões e clique em instalar e selecione o arquivo HabbletUtils.js baixado no passo 2
+5. Conecte-se ao Habblet, a extensão deverá estar funcionando e você receberá um console.
 
 * **Se você tiver algum problema com a instalação do G-Earth ou da Extensão me procure no Habblet. Nick: Promise.all**
 
@@ -62,10 +62,25 @@ cd HabbletUtils
 yarn
 ```
 
-## Running
+## Rodando em teste
 
 Depois de configurar tudo, você pode executar o seguinte comando para iniciar a extensão
 
 ```bash
 yarn dev
+```
+
+## Compilando o projeto
+
+Depois de fazer suas alterações você pode compilar o projeto para o arquivo final e adiciona-lo ao seu G-Earth
+
+```bash
+yarn build
+```
+
+O arquivo final será gerado em `dist/HabbletUtils.js`
+Antes de compartilhar sua build e ou adicionar ao G-Earth, você pode testar a versão compilando executando o seguinte comando
+
+```bash
+yarn start
 ```

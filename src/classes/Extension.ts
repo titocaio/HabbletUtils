@@ -4,7 +4,6 @@ import { ExtensionInfo } from 'gnode-api/lib/extension/extensioninfo';
 import { states, StatesInterface } from '../states/states';
 import { Command } from '../interfaces/Command';
 import { intervals, IntervalsInterface } from '../states/intervals';
-import { join } from 'path';
 import { Event } from '../interfaces/Event';
 import { Console } from './Console';
 import { userObjectInterface } from '../interfaces/UserObject';

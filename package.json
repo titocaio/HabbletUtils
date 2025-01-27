@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn run prebuild && esbuild src/index.ts --bundle --platform=node --outfile=dist/HabbletUtils.js --target=es6",
     "prebuild": "node generate-index.js",
-    "start": "node dist/index.js",
+    "start": "node dist/HabbletUtils.js -p 9092",
     "dev": "nodemon"
   },
   "license": "MIT",

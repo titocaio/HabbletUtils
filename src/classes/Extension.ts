@@ -9,6 +9,7 @@ import { Event } from '../interfaces/Event';
 import { Console } from './Console';
 import { userObjectInterface } from '../interfaces/UserObject';
 import { variables, VariablesInterface } from '../states/variables';
+import { commandsPre, eventsPre} from '../prebuilt-index'
 
 export class Ext extends Extension {
     commands: Map<string, Command>;
@@ -71,37 +72,29 @@ export class Ext extends Extension {
     }
 
     async loadCommands() {
-        const commandDir = join(process.cwd(), 'src', 'commands');
-        const commandFiles = readdirSync(commandDir);
-
-        commandFiles.forEach(file => {
-            if (file.endsWith('.ts')) {
-                import(join(commandDir, file)).then(commandModule => {
-                    const command = commandModule.command;
-                    if (command && command.config?.name) {
-                        this.commands.set(command.config.name, command);
-                        console.log(`[LOG COMMANDS] Carregando o evento - [${file}]`);
-                    } else {
-                        console.warn(`Command file ${file} is missing a valid export.`);
-                    }
-                });
-            }
-        });
+        for (const [name, command] of Object.entries(commandsPre)) {
+            this.commands.set(name, command);
+            console.log(`[LOG COMMANDS] Loaded command - [${name}]`);
+        }
     }
 
     async loadEvents() {
-        const path = './src/events';
-        const files = readdirSync(path);
-        for (const file of files) {
-            const eventModule = await import (join(process.cwd(), `${path}/${file}`));
-            const event: Event = eventModule.event;
+        for (const [name, event] of Object.entries(eventsPre)) {
             if (typeof event.config.header === "string") {
-                this.interceptByNameOrHash(event.config.direction, event.config.header, (hMessage: HMessage) => event.run(this, hMessage))
+                this.interceptByNameOrHash(
+                    event.config.direction,
+                    event.config.header,
+                    (hMessage: HMessage) => event.run(this, hMessage)
+                );
             } else if (typeof event.config.header === "number") {
-                this.interceptByHeaderId(event.config.direction, event.config.header, (hMessage: HMessage) => event.run(this, hMessage))
+                this.interceptByHeaderId(
+                    event.config.direction,
+                    event.config.header,
+                    (hMessage: HMessage) => event.run(this, hMessage)
+                );
             }
-            
-            console.log(`[LOG EVENTS] Carregando o evento - [${file}]`);
+    
+            console.log(`[LOG EVENTS] Loaded event - [${name}]`);
         }
     }
 }

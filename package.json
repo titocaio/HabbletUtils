@@ -5,12 +5,14 @@
   "author": "Lx",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "yarn run prebuild && esbuild src/index.ts --bundle --platform=node --outfile=dist/HabbletUtils.js --target=es6",
+    "prebuild": "node generate-index.js",
     "start": "node dist/index.js",
     "dev": "nodemon"
   },
   "license": "MIT",
   "devDependencies": {
+    "esbuild": "^0.24.2",
     "eslint": "^9.18.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",

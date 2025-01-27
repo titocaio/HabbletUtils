@@ -9,7 +9,6 @@ export interface StatesInterface {
     blockclick: boolean
     stay: boolean
     clonetext: boolean
-    cloningUserId: number
     floodhanditem: boolean
 }
 
@@ -24,6 +23,5 @@ export const states: StatesInterface = {
     blockclick: true,
     stay: false,
     clonetext: false,
-    cloningUserId: 0,
     floodhanditem: false
 }

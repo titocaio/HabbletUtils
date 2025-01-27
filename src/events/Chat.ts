@@ -9,8 +9,8 @@ export const event: Event = {
         const index = packet.readInteger()
         const text = packet.readString()
 
-        if (!ext.states.clonetext || ext.states.cloningUserId === 0) return;
-        if (index !== ext.states.cloningUserId) return;
+        if (!ext.states.clonetext || ext.variables.cloningUserId === 0) return;
+        if (index !== ext.variables.cloningUserId) return;
 
         await delay(10)
         const msgpacket = new HPacket('Chat', HDirection.TOSERVER)

@@ -37,7 +37,7 @@ export const command: Command = {
             // Marca o Clone Text como desativado
             ext.states.clonetext = false
             // Limpa o Index do usuário
-            ext.states.cloningUserId = 0
+            ext.variables.cloningUserId = 0
             sendConsoleMessage(`Desativando clonagem de texto`)
         }
 

@@ -1,5 +1,6 @@
 {
     "watch": ["src"],
+    "ignore": ["src/prebuilt-index.ts"],
     "ext": "ts",
-    "exec": "ts-node ./src/index.ts -p 9092"
+    "exec": "yarn run prebuild && ts-node ./src/index.ts -p 9092"
   }

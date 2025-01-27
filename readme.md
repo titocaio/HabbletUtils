@@ -25,11 +25,12 @@ HabbleUtils é uma extensão do [G-Earth](https://github.com/UnfamiliarLegacy/G-
 - Flood Click
 - Flood Hand Item
 
-## Installation
+## Instalação
 1. Baixe a ultima versão do [G-Earth](https://github.com/UnfamiliarLegacy/G-Earth "G-Earth")
 2. Baixe a última versão do HabbletUtils direto da página de [Releases](https://github.com/iIlusion/HabbletUtils/releases/latest).
 3. Extraia os arquivos do HabbletUtils dentro da pasta "Extensions" na pasta raiz do G-Earth
-4. Conecte-se ao Habblet usando o G-Earth e a extensão estará funcionando
+4. Abra a pasta HabbletUtils_x.x.x.zip, abre a pasta extension e execute o arquivo install.bat para instalar as dependências do HabbletUtils
+5. Abra o G-Earth e conecte-se ao Habblet usando, a extensão deverá estar funcionando
 
 * **Se você tiver algum problema com a instalação do G-Earth ou da Extensão me procure no Habblet. Nick: Promise.all**
 
@@ -66,5 +67,5 @@ yarn
 Depois de configurar tudo, você pode executar o seguinte comando para iniciar a extensão
 
 ```bash
-yarn test
+yarn dev
 ```

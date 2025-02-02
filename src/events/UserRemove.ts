@@ -6,13 +6,13 @@ import { getUserId } from "../utils/emitUserId";
 export const event: Event = {
     run: (ext: Ext, hMessage: HMessage) => {
         const packet = hMessage.getPacket()
-        const idx = packet.readInteger()
+        const idx = parseInt(packet.readString())
 
-        ext.roomUsers.filter((user) => user.index !== idx)
+        ext.roomUsers = ext.roomUsers.filter((user) => user.index !== idx)
     },
     config: {
         name: 'Users Remove',
-        header: 'UsersRemove',
+        header: 'UserRemove',
         direction: HDirection.TOCLIENT  
     }
 }

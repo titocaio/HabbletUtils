@@ -17,6 +17,7 @@ export interface ExtensionState {
     handItemFlood: Boolean;
     antiSpam: boolean;
     blockCamera: boolean;
+    ping: boolean;
 }
 
 export const initialState: ExtensionState = {
@@ -32,6 +33,7 @@ export const initialState: ExtensionState = {
     handItemFlood: false,
     antiSpam: false,
     blockCamera: false,
+    ping: false,
 };
 
 export async function initilizeExtension(ext: Extension) {

@@ -11,7 +11,7 @@ export class Console {
         this.ext = ext;
 
         this.name = "Habblet Utils"
-        this.figureString = "hd-209-97554.hr-11097-61-40.lg-10944-107574.ch-3935-91-1408.ca-11261-73.cc-3744-90-90.wa-3798-1325-92.fa-11087-1408"
+        this.figureString = "M=hd-205-97554.lg-275-92.hr-11743-49.ch-215-92.sh-3621-92-1408.fa-1202-73.wa-11831-73.ha-11225-92-73"
         this.motto = "By @RiotSpacebar"
         
         this.createConsole();

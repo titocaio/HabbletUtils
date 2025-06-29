@@ -50,7 +50,7 @@ export const command: Command = {
         }
     },
     config: {
-        name: 'floodclick',
+        name: 'clickflood',
         description: 'Flooda de clicks o usuario selecionado (otimo para quartos que exibem a mensagem "Clicou em você")'
     }
 }

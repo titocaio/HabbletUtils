@@ -14,13 +14,13 @@ export interface StatesInterface {
 
 export const states: StatesInterface = {
     login: false,
-    antiafk: true,
+    antiafk: false,
     antispam: false,
-    antiturn: true,
-    antityping: true,
+    antiturn: false,
+    antityping: false,
     blockmove: false,
     floodclick: false,
-    blockclick: true,
+    blockclick: false,
     stay: false,
     clonetext: false,
     floodhanditem: false
